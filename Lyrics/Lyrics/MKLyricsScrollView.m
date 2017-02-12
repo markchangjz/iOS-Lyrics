@@ -1,11 +1,3 @@
-//
-//  MKLyricScrollView.m
-//  Lyric2
-//
-//  Created by Mac on 13/10/14.
-//  Copyright (c) 2013年 KKBOX. All rights reserved.
-//
-
 #import "MKLyricsScrollView.h"
 #import <QuartzCore/QuartzCore.h>
 

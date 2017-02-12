@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  Lyrics
-//
-//  Created by MarkChang on 2017/2/12.
-//  Copyright © 2017年 MarkChang. All rights reserved.
-//
-
 #import "AppDelegate.h"
 #import "MKMainViewController.h"
 

@@ -1,11 +1,3 @@
-//
-//  MKMainViewController.m
-//  Lyric2
-//
-//  Created by Mac on 13/10/15.
-//  Copyright (c) 2013年 KKBOX. All rights reserved.
-//
-
 #import "MKMainViewController.h"
 #import "MKLyricsViewController.h"
 #import <QuartzCore/QuartzCore.h>
