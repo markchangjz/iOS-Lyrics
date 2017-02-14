@@ -13,11 +13,6 @@ static const CGFloat lyricsPadding = 20.0;
     CGFloat lyricsTextLayerY = lyricsPadding;
     
     for (int i = 0; i < [self.dataSoruce parsedLyricsForLyricsScrollView:self].count; i++) {
-        CATextLayer *countdownTextLayer = [CATextLayer layer];
-        countdownTextLayer.foregroundColor = [UIColor yellowColor].CGColor;
-        countdownTextLayer.fontSize = 16;
-        countdownTextLayer.frame = CGRectMake(10, 0, 20, 20);
-        
         CATextLayer *lyricsTextLayer = [CATextLayer layer];
         lyricsTextLayer.string = [self.dataSoruce parsedLyricsForLyricsScrollView:self][i][@"lineLyrics"];
 		
@@ -34,7 +29,12 @@ static const CGFloat lyricsPadding = 20.0;
         lyricsTextLayer.contentsScale = [UIScreen mainScreen].scale;
             
         lyricsTextLayerY += lyricsTextLayerHeight + lyricsPadding;
-        
+		
+		CATextLayer *countdownTextLayer = [CATextLayer layer];
+		countdownTextLayer.foregroundColor = [UIColor yellowColor].CGColor;
+		countdownTextLayer.fontSize = 16;
+		countdownTextLayer.frame = CGRectMake(10, 0, textSize.height, textSize.height);
+		
         [lyricsTextLayer addSublayer:countdownTextLayer];
         [self.layer addSublayer:lyricsTextLayer];
         [self.lyricsTextLayers addObject:lyricsTextLayer];

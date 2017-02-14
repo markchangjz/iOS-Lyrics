@@ -2,7 +2,6 @@
 #import "MKLyricsParser.h"
 #import "MKLyricsScrollView.h"
 #import "SYSTEM_INFO.h"
-#import <QuartzCore/QuartzCore.h>
 
 static const NSTimeInterval kCountdownInterval = 3.0;
 
