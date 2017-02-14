@@ -33,7 +33,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 - (void)loadLyricsWithFilePath:(NSString *)filePath error:(NSError *__autoreleasing *)inError
 {
     NSError *error = nil;
-    NSString *readFilePathContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
+    NSString *lyricsContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
     
     if (error) {
         *inError = error;
@@ -41,7 +41,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
     }
     
     MKLyricsParser *lyricsParser = [[MKLyricsParser alloc] init];
-    parsedLyricsData = [lyricsParser parseLyricsWithString:readFilePathContents];
+    parsedLyricsData = [lyricsParser parseLyricsWithString:lyricsContents];
 }
 
 - (void)playAtTime:(NSTimeInterval)time
