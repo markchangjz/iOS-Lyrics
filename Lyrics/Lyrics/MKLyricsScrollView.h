@@ -15,6 +15,6 @@
 @property (weak, nonatomic) id <MKLyricScrollViewDatasource> dataSoruce;
 @property (strong, nonatomic) NSMutableArray *countdownTextLayers;
 @property (strong, nonatomic) NSMutableArray *lyricsTextLayers;
-@property (nonatomic, strong) NSMutableArray *accessibleElements;
+@property (strong, nonatomic) NSMutableArray *accessibleElements;
 
 @end
