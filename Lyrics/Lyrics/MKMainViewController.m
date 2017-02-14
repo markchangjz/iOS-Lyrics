@@ -9,7 +9,7 @@ static const NSTimeInterval kRefreshInterval = 0.25;
 {
     NSTimer *lyricsRefreshTimer;
     NSTimeInterval currentPlayTime;
-    BOOL isTimeSliderTouchDown;
+    BOOL isTimeSliderBeingTouchedDown;
 }
 
 @property (strong, nonatomic) MKLyricsViewController *lyricsViewController;
@@ -81,7 +81,7 @@ static const NSTimeInterval kRefreshInterval = 0.25;
         [lyricsRefreshTimer invalidate];
     }
     
-    if (!isTimeSliderTouchDown) {
+    if (!isTimeSliderBeingTouchedDown) {
         self.timeSlider.value = currentPlayTime;
         self.currentPlayTimeLabel.text = [self _formattedStringForDuration:currentPlayTime];
         [self.timeSlider setAccessibilityLabel:[@"目前播放時間" stringByAppendingString:[self _formattedAccessibilityStringForDuration:currentPlayTime]]];
@@ -104,11 +104,11 @@ static const NSTimeInterval kRefreshInterval = 0.25;
 
 - (void)_startLyricsRefreshTimer
 {
-    lyricsRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:kRefreshInterval
-                                                          target:self
-                                                        selector:@selector(_refreshLyricsViewController:)
-                                                        userInfo:nil
-                                                         repeats:YES];
+    lyricsRefreshTimer = [NSTimer timerWithTimeInterval:kRefreshInterval
+												 target:self
+											   selector:@selector(_refreshLyricsViewController:)
+											   userInfo:nil
+												repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:lyricsRefreshTimer forMode:NSRunLoopCommonModes];
 }
@@ -117,12 +117,12 @@ static const NSTimeInterval kRefreshInterval = 0.25;
 
 - (IBAction)timeSliderTouchDown:(UISlider *)sender
 {
-    isTimeSliderTouchDown = YES;
+    isTimeSliderBeingTouchedDown = YES;
 }
 
 - (IBAction)timeSliderTouchUpInside:(UISlider *)sender
 {
-    isTimeSliderTouchDown = NO;
+    isTimeSliderBeingTouchedDown = NO;
     currentPlayTime = sender.value;
     [self.lyricsViewController playAtTime:sender.value];
     
