@@ -48,6 +48,10 @@ static const NSTimeInterval kRefreshInterval = 0.25;
         textLayer.fontSize = 20;
         textLayer.contentsScale = [UIScreen mainScreen].scale;
         [self.view.layer addSublayer:textLayer];
+		
+		self.currentPlayTimeLabel.hidden = YES;
+		self.durationLabel.hidden = YES;
+		self.timeSlider.hidden = YES;
         return;
     }
     
