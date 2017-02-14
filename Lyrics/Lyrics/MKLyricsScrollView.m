@@ -17,7 +17,6 @@ static const CGFloat lyricsPadding = 20.0;
         lyricsTextLayer.string = [self.dataSoruce parsedLyricsForLyricsScrollView:self][i][@"lineLyrics"];
 		
 		CGSize textSize = [lyricsTextLayer.string sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:16]}];
-		
         CGFloat lyricsTextLayerHeight = MIN(textSize.height, self.frame.size.height);
         
         lyricsTextLayer.frame = CGRectMake(0, lyricsTextLayerY, self.frame.size.width, lyricsTextLayerHeight);
@@ -34,9 +33,11 @@ static const CGFloat lyricsPadding = 20.0;
 		countdownTextLayer.foregroundColor = [UIColor yellowColor].CGColor;
 		countdownTextLayer.fontSize = 16;
 		countdownTextLayer.frame = CGRectMake(10, 0, textSize.height, textSize.height);
+		countdownTextLayer.contentsScale = [UIScreen mainScreen].scale;
 		
         [lyricsTextLayer addSublayer:countdownTextLayer];
         [self.layer addSublayer:lyricsTextLayer];
+		
         [self.lyricsTextLayers addObject:lyricsTextLayer];
         [self.countdownTextLayers addObject:countdownTextLayer];
     }
