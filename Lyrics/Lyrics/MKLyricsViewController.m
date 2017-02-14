@@ -6,7 +6,7 @@
 
 static const NSTimeInterval kCountdownInterval = 3.0;
 
-@interface MKLyricsViewController () <MKLyricScrollViewDatasource>
+@interface MKLyricsViewController () <MKLyricScrollViewDataSource>
 {
     NSArray *parsedLyricsData;
 }

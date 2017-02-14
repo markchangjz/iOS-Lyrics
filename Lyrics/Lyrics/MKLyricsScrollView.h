@@ -2,7 +2,7 @@
 
 @class MKLyricsScrollView;
 
-@protocol MKLyricScrollViewDatasource <NSObject>
+@protocol MKLyricScrollViewDataSource <NSObject>
 
 - (NSArray *)parsedLyricsForLyricsScrollView:(MKLyricsScrollView *)inView;
 
@@ -12,7 +12,7 @@
 
 - (void)reloadData;
 
-@property (weak, nonatomic) id <MKLyricScrollViewDatasource> dataSoruce;
+@property (weak, nonatomic) id <MKLyricScrollViewDataSource> dataSoruce;
 @property (strong, nonatomic) NSMutableArray *countdownTextLayers;
 @property (strong, nonatomic) NSMutableArray *lyricsTextLayers;
 @property (strong, nonatomic) NSMutableArray *accessibleElements;
