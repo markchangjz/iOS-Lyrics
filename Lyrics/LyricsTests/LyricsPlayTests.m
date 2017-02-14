@@ -7,10 +7,16 @@
 
 @implementation LyricsPlayTests {
 	MKLyricsViewController *mkLyricsViewController;
+	NSString *lyricsFilePath;
 }
 
 - (void)setUp {
     [super setUp];
+	
+	lyricsFilePath = lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
+	NSError *error = nil;
+	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
+	XCTAssertNil(error);
 
 	mkLyricsViewController = [[MKLyricsViewController alloc] init];
 }
@@ -19,15 +25,9 @@
     [super tearDown];
 }
 
-- (void)testPlayAtTime
+- (void)testPlayAtValidTime
 {
-	NSError *error = nil;
-	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
-	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
-	XCTAssertNil(error);
-	
 	[mkLyricsViewController playAtTime:22.0];
-	
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
 	
 	int playingLyricsIndex = 1;
@@ -42,31 +42,9 @@
 	}
 }
 
-- (void)testPlayAtTime_ZeroSecond
+- (void)testPlayAtNegativeTime
 {
-	NSError *error = nil;
-	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
-	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
-	XCTAssertNil(error);
-	
-	[mkLyricsViewController playAtTime:0.0];
-	
-	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
-	
-	for (int i = 0; i < lyrics.count; i++) {
-		XCTAssertFalse([lyrics[i][@"playing"] boolValue], @"no lyrics playing");
-	}
-}
-
-- (void)testPlayAtTime_NegativeSecond
-{
-	NSError *error = nil;
-	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
-	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
-	XCTAssertNil(error);
-	
 	[mkLyricsViewController playAtTime:-1.0];
-	
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
 	
 	for (int i = 0; i < lyrics.count; i++) {
@@ -74,15 +52,29 @@
 	}
 }
 
-- (void)testPlayAtTime_DurationSecond
+- (void)testPlayAtZeroTime
 {
-	NSError *error = nil;
-	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
-	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
-	XCTAssertNil(error);
+	[mkLyricsViewController playAtTime:0.0];
+	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
 	
+	for (int i = 0; i < lyrics.count; i++) {
+		XCTAssertFalse([lyrics[i][@"playing"] boolValue], @"no lyrics playing");
+	}
+}
+
+- (void)testPlayAtDurationTime
+{
 	[mkLyricsViewController playAtTime:mkLyricsViewController.duration];
+	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
 	
+	for (int i = 0; i < lyrics.count; i++) {
+		XCTAssertFalse([lyrics[i][@"playing"] boolValue], @"no lyrics playing");
+	}
+}
+
+- (void)testPlayAtMaxTime
+{
+	[mkLyricsViewController playAtTime:999999];
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
 	
 	for (int i = 0; i < lyrics.count; i++) {
