@@ -5,9 +5,10 @@
 
 @end
 
-@implementation LyricsParserTests
-
-MKLyricsParser *lyricsParser;
+@implementation LyricsParserTests {
+	MKLyricsParser *lyricsParser;
+	NSArray *parsedLyricsData;
+}
 
 - (void)setUp {
     [super setUp];
@@ -19,43 +20,49 @@ MKLyricsParser *lyricsParser;
     [super tearDown];
 }
 
-- (void)testParsedLyricSuccess
+- (void)testParseValidLyrics
 {
-	NSArray *parsedLyricData = [lyricsParser parseLyricsWithString:@"[00:26.05 00:31.10]<type=2>她愛她     她愛他"];
+	NSString *lyrics = @"[00:26.05 00:31.10]<type=2>她愛她     她愛他";
+	parsedLyricsData = [lyricsParser parseLyricsWithString:lyrics];
 	
-	XCTAssertNotNil(parsedLyricData, @"parsedLyricData is nil");
-	XCTAssertEqual([parsedLyricData[0][@"lineStart"] doubleValue], 26.05, @"lineStart is incorrect");
-	XCTAssertEqual([parsedLyricData[0][@"lineEnd"] doubleValue], 31.10, @"lineEnd is incorrect");
-	XCTAssertEqual([parsedLyricData[0][@"type"] intValue], 2, @"type is incorrect");
-	XCTAssertEqualObjects((NSString *)parsedLyricData[0][@"lineLyrics"], @"她愛她     她愛他", @"lineLyrics is incorrect");
+	XCTAssertNotNil(parsedLyricsData, @"parsedLyricData is nil");
+	XCTAssertEqual([parsedLyricsData[0][@"lineStart"] doubleValue], 26.05, @"lineStart is incorrect");
+	XCTAssertEqual([parsedLyricsData[0][@"lineEnd"] doubleValue], 31.10, @"lineEnd is incorrect");
+	XCTAssertEqual([parsedLyricsData[0][@"type"] intValue], 2, @"type is incorrect");
+	XCTAssertEqualObjects((NSString *)parsedLyricsData[0][@"lineLyrics"], @"她愛她     她愛他", @"lineLyrics is incorrect");
 }
 
-- (void)testParsedLyricFail
+- (void)testParseInvalidLyrics
 {
-	NSArray *parsedLyricData = [lyricsParser parseLyricsWithString:@"[01:03 幸福 我要的幸福 在不遠處"];
+	NSString *lyrics = @"[01:03 幸福 我要的幸福 在不遠處";
+	parsedLyricsData = [lyricsParser parseLyricsWithString:lyrics];
 	
-	XCTAssertEqual(parsedLyricData.count, (NSUInteger)0, @"parsedLyricData has no data");
+	XCTAssertEqual(parsedLyricsData.count, (NSUInteger)0, @"parsedLyricData has no data");
 }
 
-- (void)testParsingEmptyString
+- (void)testParseEmptyData
 {
-	NSArray *parsedLyricData = [lyricsParser parseLyricsWithString:@""];
+	NSString *lyrics = @"";
+	parsedLyricsData = [lyricsParser parseLyricsWithString:lyrics];
 	
-	XCTAssertEqual(parsedLyricData.count, (NSUInteger)0, @"parsedLyricData has no data");
+	XCTAssertEqual(parsedLyricsData.count, (NSUInteger)0, @"parsedLyricData has no data");
 }
 
-- (void)testParsingEmptyTime
+- (void)testParseEmptyTime
 {
-	NSArray *parsedLyricData = [lyricsParser parseLyricsWithString:@"[]<type=0>Test"];
+	NSString *lyrics = @"[]<type=0>Test";
+	parsedLyricsData = [lyricsParser parseLyricsWithString:lyrics];
 	
-	XCTAssertEqual(parsedLyricData.count, (NSUInteger)0, @"parsedLyricData has no data");
+	XCTAssertEqual(parsedLyricsData.count, (NSUInteger)0, @"parsedLyricData has no data");
 }
 
-- (void)testParsingEmptyLyricsText
+- (void)testParseEmptyLyricsText
 {
-	NSArray *parsedLyricData = [lyricsParser parseLyricsWithString:@"[00:00.00 00:00.00]<type=0>"];
+	NSString *lyrics = @"[00:00.00 00:00.00]<type=0>";
+	parsedLyricsData = [lyricsParser parseLyricsWithString:lyrics];
 	
-	XCTAssertEqual(parsedLyricData.count, (NSUInteger)1, @"parsedLyricData must has data");
+	XCTAssertEqual(parsedLyricsData.count, (NSUInteger)1, @"parsedLyricData must has data");
+	XCTAssertEqualObjects((NSString *)parsedLyricsData[0][@"lineLyrics"], @"", @"lineLyrics is incorrect");
 }
 
 @end
