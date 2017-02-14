@@ -1,5 +1,4 @@
 #import "MKLyricsScrollView.h"
-#import <QuartzCore/QuartzCore.h>
 
 static const CGFloat paddingY = 20.0;
 static const CGFloat lyricsPadding = 20.0;
