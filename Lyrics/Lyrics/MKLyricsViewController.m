@@ -62,12 +62,13 @@ static const NSTimeInterval kCountdownInterval = 3.0;
     for (int i = 0; i < parsedLyricsData.count; i++) {
         if ([parsedLyricsData[i][@"sec_st"] boolValue]) {
             CATextLayer *countdownTextLayer = self.mkLyricsScrollView.countdownTextLayers[i];
-            
-            if ([self _isTime:currentPlayTime inIntervalFrom:[parsedLyricsData[i][@"lineStart"] doubleValue] - kCountdownInterval To:[parsedLyricsData[i][@"lineStart"] doubleValue]]) {
-                countdownTextLayer.string = [NSString stringWithFormat:@"%d", (int)([parsedLyricsData[i][@"lineStart"] doubleValue] - currentPlayTime) + 1];
+			double startTime = [parsedLyricsData[i][@"lineStart"] doubleValue];
+			
+            if ([self _isTime:currentPlayTime inIntervalFrom:startTime - kCountdownInterval To:startTime]) {
+                countdownTextLayer.string = [NSString stringWithFormat:@"%d", (int)(startTime - currentPlayTime) + 1];
             }
             else {
-                countdownTextLayer.string = @"";
+                countdownTextLayer.string = @""; // 倒數完後，把字清空
             }
         }
     }
@@ -76,7 +77,10 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 - (void)_markPlayingLyrics:(NSTimeInterval)currentPlayTime
 {
     for (int i = 0; i < parsedLyricsData.count; i++) {
-        if ([self _isTime:currentPlayTime inIntervalFrom:[parsedLyricsData[i][@"lineStart"] doubleValue] To:[parsedLyricsData[i][@"lineEnd"] doubleValue]]) {
+		double startTime = [parsedLyricsData[i][@"lineStart"] doubleValue];
+		double endTime = [parsedLyricsData[i][@"lineEnd"] doubleValue];
+		
+        if ([self _isTime:currentPlayTime inIntervalFrom:startTime To:endTime]) {
             parsedLyricsData[i][@"playing"] = [NSNumber numberWithBool:YES];
         }
         else {
