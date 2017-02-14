@@ -5,9 +5,9 @@
 
 @end
 
-@implementation LyricsPlayTests
-
-MKLyricsViewController *mkLyricsViewController;
+@implementation LyricsPlayTests {
+	MKLyricsViewController *mkLyricsViewController;
+}
 
 - (void)setUp {
     [super setUp];
