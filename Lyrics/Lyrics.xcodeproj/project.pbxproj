@@ -22,6 +22,7 @@
 		0D3122E01E5043B3002EF28E /* lyrics.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122D71E5043B3002EF28E /* lyrics.lrc */; };
 		0D3122E21E504649002EF28E /* LyricsPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122E11E504649002EF28E /* LyricsPlayTests.m */; };
 		0D3122E41E504D1A002EF28E /* MKMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122E31E504D1A002EF28E /* MKMainViewController.xib */; };
+		0D6504A31E5352AB008E1254 /* lyricsForUnitTest.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 0D6504A21E5352AB008E1254 /* lyricsForUnitTest.lrc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		0D3122D71E5043B3002EF28E /* lyrics.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lyrics.lrc; sourceTree = "<group>"; };
 		0D3122E11E504649002EF28E /* LyricsPlayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsPlayTests.m; sourceTree = "<group>"; };
 		0D3122E31E504D1A002EF28E /* MKMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKMainViewController.xib; sourceTree = "<group>"; };
+		0D6504A21E5352AB008E1254 /* lyricsForUnitTest.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lyricsForUnitTest.lrc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			children = (
 				0D3122BF1E504346002EF28E /* LyricsParserTests.m */,
 				0D3122E11E504649002EF28E /* LyricsPlayTests.m */,
+				0D6504A21E5352AB008E1254 /* lyricsForUnitTest.lrc */,
 				0D3122C11E504346002EF28E /* Info.plist */,
 			);
 			path = LyricsTests;
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D3122B51E504346002EF28E /* LaunchScreen.storyboard in Resources */,
+				0D6504A31E5352AB008E1254 /* lyricsForUnitTest.lrc in Resources */,
 				0D3122DD1E5043B3002EF28E /* MKLyricsViewController_iPad.xib in Resources */,
 				0D3122B21E504346002EF28E /* Assets.xcassets in Resources */,
 				0D3122E01E5043B3002EF28E /* lyrics.lrc in Resources */,

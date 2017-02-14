@@ -24,6 +24,8 @@ MKLyricsViewController *mkLyricsViewController;
 	NSError *error = nil;
 	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
 	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
+	XCTAssertNil(error);
+	
 	[mkLyricsViewController playAtTime:22.0];
 	
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
@@ -45,6 +47,8 @@ MKLyricsViewController *mkLyricsViewController;
 	NSError *error = nil;
 	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
 	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
+	XCTAssertNil(error);
+	
 	[mkLyricsViewController playAtTime:0.0];
 	
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
@@ -59,6 +63,8 @@ MKLyricsViewController *mkLyricsViewController;
 	NSError *error = nil;
 	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
 	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
+	XCTAssertNil(error);
+	
 	[mkLyricsViewController playAtTime:-1.0];
 	
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
@@ -73,6 +79,8 @@ MKLyricsViewController *mkLyricsViewController;
 	NSError *error = nil;
 	NSString *lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
 	[mkLyricsViewController loadLyricsWithFilePath:lyricsFilePath error:&error];
+	XCTAssertNil(error);
+	
 	[mkLyricsViewController playAtTime:mkLyricsViewController.duration];
 	
 	NSArray *lyrics = [mkLyricsViewController valueForKey:@"parsedLyricsData"];
