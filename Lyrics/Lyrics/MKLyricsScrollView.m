@@ -1,6 +1,5 @@
 #import "MKLyricsScrollView.h"
 
-static const CGFloat paddingY = 20.0;
 static const CGFloat lyricsPadding = 20.0;
 
 @implementation MKLyricsScrollView
@@ -42,7 +41,7 @@ static const CGFloat lyricsPadding = 20.0;
         [self.countdownTextLayers addObject:countdownTextLayer];
     }
     
-    self.contentSize = CGSizeMake(self.frame.size.width, lyricsTextLayerY + paddingY);
+    self.contentSize = CGSizeMake(self.frame.size.width, lyricsTextLayerY + lyricsPadding);
 }
 
 #pragma mark - lazy loading
