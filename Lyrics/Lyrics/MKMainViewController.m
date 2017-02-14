@@ -13,9 +13,11 @@ static const NSTimeInterval kRefreshInterval = 0.25;
 }
 
 @property (strong, nonatomic) MKLyricsViewController *lyricsViewController;
+
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @property (weak, nonatomic) IBOutlet UISlider *timeSlider;
+
 - (IBAction)timeSliderTouchDown:(UISlider *)sender;
 - (IBAction)timeSliderTouchUpInside:(UISlider *)sender;
 - (IBAction)timeSliderValueChanged:(UISlider *)sender;
