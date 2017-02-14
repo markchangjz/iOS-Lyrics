@@ -11,7 +11,7 @@
 		0D3122AA1E504346002EF28E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122A91E504346002EF28E /* AppDelegate.m */; };
 		0D3122B21E504346002EF28E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122B11E504346002EF28E /* Assets.xcassets */; };
 		0D3122B51E504346002EF28E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122B31E504346002EF28E /* LaunchScreen.storyboard */; };
-		0D3122C01E504346002EF28E /* LyricsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122BF1E504346002EF28E /* LyricsTests.m */; };
+		0D3122C01E504346002EF28E /* LyricsParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122BF1E504346002EF28E /* LyricsParserTests.m */; };
 		0D3122D81E5043B3002EF28E /* MKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122CB1E5043B3002EF28E /* MKMainViewController.m */; };
 		0D3122DA1E5043B3002EF28E /* MKMainViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122CD1E5043B3002EF28E /* MKMainViewController_iPad.xib */; };
 		0D3122DB1E5043B3002EF28E /* MKLyricsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122CF1E5043B3002EF28E /* MKLyricsViewController.m */; };
@@ -43,7 +43,7 @@
 		0D3122B41E504346002EF28E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D3122B61E504346002EF28E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D3122BB1E504346002EF28E /* LyricsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LyricsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0D3122BF1E504346002EF28E /* LyricsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LyricsTests.m; sourceTree = "<group>"; };
+		0D3122BF1E504346002EF28E /* LyricsParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LyricsParserTests.m; sourceTree = "<group>"; };
 		0D3122C11E504346002EF28E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D3122CA1E5043B3002EF28E /* MKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKMainViewController.h; sourceTree = "<group>"; };
 		0D3122CB1E5043B3002EF28E /* MKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKMainViewController.m; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		0D3122BE1E504346002EF28E /* LyricsTests */ = {
 			isa = PBXGroup;
 			children = (
-				0D3122BF1E504346002EF28E /* LyricsTests.m */,
+				0D3122BF1E504346002EF28E /* LyricsParserTests.m */,
 				0D3122E11E504649002EF28E /* LyricsPlayTests.m */,
 				0D3122C11E504346002EF28E /* Info.plist */,
 			);
@@ -264,7 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D3122C01E504346002EF28E /* LyricsTests.m in Sources */,
+				0D3122C01E504346002EF28E /* LyricsParserTests.m in Sources */,
 				0D3122E21E504649002EF28E /* LyricsPlayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +454,7 @@
 				0D3122C61E504346002EF28E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D3122C71E504346002EF28E /* Build configuration list for PBXNativeTarget "LyricsTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +463,7 @@
 				0D3122C91E504346002EF28E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
