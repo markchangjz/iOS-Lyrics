@@ -12,7 +12,7 @@
 
 - (void)reloadData;
 
-@property (weak, nonatomic) id <MKLyricScrollViewDataSource> dataSoruce;
+@property (weak, nonatomic) id <MKLyricScrollViewDataSource> dataSource;
 @property (strong, nonatomic) NSMutableArray *countdownTextLayers;
 @property (strong, nonatomic) NSMutableArray *lyricsTextLayers;
 @property (strong, nonatomic) NSMutableArray *accessibleElements;

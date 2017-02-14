@@ -23,7 +23,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
     self.mkLyricsScrollView = [[MKLyricsScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     self.mkLyricsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.mkLyricsScrollView.backgroundColor = [UIColor darkGrayColor];
-    self.mkLyricsScrollView.dataSoruce = self;
+    self.mkLyricsScrollView.dataSource = self;
     [self.mkLyricsScrollView reloadData];
     [self.view addSubview:self.mkLyricsScrollView];
 }

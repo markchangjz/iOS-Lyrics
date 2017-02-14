@@ -11,9 +11,9 @@ static const CGFloat lyricsPadding = 20.0;
     
     CGFloat lyricsTextLayerY = lyricsPadding;
     
-    for (int i = 0; i < [self.dataSoruce parsedLyricsForLyricsScrollView:self].count; i++) {
+    for (int i = 0; i < [self.dataSource parsedLyricsForLyricsScrollView:self].count; i++) {
         CATextLayer *lyricsTextLayer = [CATextLayer layer];
-        lyricsTextLayer.string = [self.dataSoruce parsedLyricsForLyricsScrollView:self][i][@"lineLyrics"];
+        lyricsTextLayer.string = [self.dataSource parsedLyricsForLyricsScrollView:self][i][@"lineLyrics"];
 		
 		CGSize textSize = [lyricsTextLayer.string sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:16]}];
         CGFloat lyricsTextLayerHeight = MIN(textSize.height, self.frame.size.height);
