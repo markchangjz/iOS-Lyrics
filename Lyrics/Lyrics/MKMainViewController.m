@@ -67,11 +67,27 @@ static const NSTimeInterval kRefreshInterval = 0.25;
     [self.timeSlider setAccessibilityTraits:UIAccessibilityTraitNone];
     self.currentPlayTimeLabel.text = [self _formattedStringForDuration:0.0];
     self.durationLabel.text = [self _formattedStringForDuration:self.lyricsViewController.duration];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     [self _startLyricsRefreshTimer];
 }
 
 #pragma mark - private function
+
+- (void)_startLyricsRefreshTimer
+{
+	lyricsRefreshTimer = [NSTimer timerWithTimeInterval:kRefreshInterval
+												 target:self
+											   selector:@selector(_refreshLyricsViewController:)
+											   userInfo:nil
+												repeats:YES];
+	
+	[[NSRunLoop mainRunLoop] addTimer:lyricsRefreshTimer forMode:NSRunLoopCommonModes];
+}
 
 - (void)_refreshLyricsViewController:(NSTimer *)timer
 {
@@ -102,17 +118,6 @@ static const NSTimeInterval kRefreshInterval = 0.25;
     NSUInteger minutes = floor(duration / 60);
     NSUInteger seconds = round(duration - minutes * 60);
     return [NSString stringWithFormat:@"%lu分%lu秒", (unsigned long)minutes, (unsigned long)seconds];
-}
-
-- (void)_startLyricsRefreshTimer
-{
-    lyricsRefreshTimer = [NSTimer timerWithTimeInterval:kRefreshInterval
-												 target:self
-											   selector:@selector(_refreshLyricsViewController:)
-											   userInfo:nil
-												repeats:YES];
-    
-    [[NSRunLoop mainRunLoop] addTimer:lyricsRefreshTimer forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark - IBAction
