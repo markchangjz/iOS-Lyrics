@@ -10,7 +10,8 @@
 	NSString *lyricsFilePath;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
 	
 	lyricsFilePath = lyricsFilePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"lyricsForUnitTest.lrc"];
@@ -21,7 +22,8 @@
 	mkLyricsViewController = [[MKLyricsViewController alloc] init];
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     [super tearDown];
 }
 

@@ -10,13 +10,15 @@
 	NSArray *parsedLyricsData;
 }
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
 
 	lyricsParser = [[MKLyricsParser alloc] init];
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     [super tearDown];
 }
 
