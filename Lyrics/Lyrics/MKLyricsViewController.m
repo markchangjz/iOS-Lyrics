@@ -10,7 +10,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
     NSArray *parsedLyricsData;
 }
 
-@property (strong, nonatomic) MKLyricsScrollView *mkLyricsScrollView;
+@property (strong, nonatomic) MKLyricsScrollView *lyricsScrollView;
 
 @end
 
@@ -20,12 +20,12 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 {
     [super viewDidLoad];
 
-    self.mkLyricsScrollView = [[MKLyricsScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    self.mkLyricsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    self.mkLyricsScrollView.backgroundColor = [UIColor darkGrayColor];
-    self.mkLyricsScrollView.dataSource = self;
-    [self.mkLyricsScrollView reloadData];
-    [self.view addSubview:self.mkLyricsScrollView];
+    self.lyricsScrollView = [[MKLyricsScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    self.lyricsScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    self.lyricsScrollView.backgroundColor = [UIColor darkGrayColor];
+    self.lyricsScrollView.dataSource = self;
+    [self.lyricsScrollView reloadData];
+    [self.view addSubview:self.lyricsScrollView];
 }
 
 #pragma mark - public function
@@ -60,7 +60,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 {
     for (int i = 0; i < parsedLyricsData.count; i++) {
         if ([parsedLyricsData[i][@"sec_st"] boolValue]) {
-            CATextLayer *countdownTextLayer = self.mkLyricsScrollView.countdownTextLayers[i];
+            CATextLayer *countdownTextLayer = self.lyricsScrollView.countdownTextLayers[i];
 			double startTime = [parsedLyricsData[i][@"start"] doubleValue];
 			
             if ([self _isTime:currentPlayTime inIntervalFrom:startTime - kCountdownInterval To:startTime]) {
@@ -91,16 +91,16 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 - (void)_scrollLyricsToVisible
 {
     for (int i = 0; i < parsedLyricsData.count; i++) {
-        CATextLayer *lyricsTextLayer = self.mkLyricsScrollView.lyricsTextLayers[i];
+        CATextLayer *lyricsTextLayer = self.lyricsScrollView.lyricsTextLayers[i];
         
         if ([parsedLyricsData[i][@"playing"] boolValue]) {
             CGRect visibleFrame = lyricsTextLayer.frame;
             visibleFrame.size.height = 300.0; // 讓捲動後還可以看到下面歌詞
             visibleFrame.origin.y -= 20.0;    // 避免捲動到與螢幕上半部切齊
             
-            if (!self.mkLyricsScrollView.isDragging) {
-                [self.mkLyricsScrollView scrollRectToVisible:visibleFrame animated:YES];
-                self.mkLyricsScrollView.accessibleElements = nil;
+            if (!self.lyricsScrollView.isDragging) {
+                [self.lyricsScrollView scrollRectToVisible:visibleFrame animated:YES];
+                self.lyricsScrollView.accessibleElements = nil;
                 break;
             }
         }
@@ -110,7 +110,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 - (void)_highlightPlayingLyrics
 {
     for (int i = 0; i < parsedLyricsData.count; i++) {
-        CATextLayer *lyricsTextLayer = self.mkLyricsScrollView.lyricsTextLayers[i];
+        CATextLayer *lyricsTextLayer = self.lyricsScrollView.lyricsTextLayers[i];
         
         if ([parsedLyricsData[i][@"playing"] boolValue]) {
             switch ([parsedLyricsData[i][@"type"] intValue]) {
