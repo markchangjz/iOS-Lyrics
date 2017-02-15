@@ -34,7 +34,6 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 {
     NSError *error = nil;
     NSString *fileContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
-    
     if (error) {
         *inError = error;
         return;
