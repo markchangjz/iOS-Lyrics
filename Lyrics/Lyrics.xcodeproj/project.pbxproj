@@ -20,7 +20,7 @@
 		0D3122DE1E5043B3002EF28E /* MKLyricsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122D31E5043B3002EF28E /* MKLyricsParser.m */; };
 		0D3122DF1E5043B3002EF28E /* MKLyricsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122D51E5043B3002EF28E /* MKLyricsScrollView.m */; };
 		0D3122E01E5043B3002EF28E /* lyrics.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122D71E5043B3002EF28E /* lyrics.lrc */; };
-		0D3122E21E504649002EF28E /* LyricsPlayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122E11E504649002EF28E /* LyricsPlayTests.m */; };
+		0D3122E21E504649002EF28E /* LyricsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3122E11E504649002EF28E /* LyricsViewControllerTests.m */; };
 		0D3122E41E504D1A002EF28E /* MKMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3122E31E504D1A002EF28E /* MKMainViewController.xib */; };
 		0D6504A31E5352AB008E1254 /* lyricsForUnitTest.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 0D6504A21E5352AB008E1254 /* lyricsForUnitTest.lrc */; };
 /* End PBXBuildFile section */
@@ -59,7 +59,7 @@
 		0D3122D51E5043B3002EF28E /* MKLyricsScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKLyricsScrollView.m; sourceTree = "<group>"; };
 		0D3122D61E5043B3002EF28E /* SYSTEM_INFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSTEM_INFO.h; sourceTree = "<group>"; };
 		0D3122D71E5043B3002EF28E /* lyrics.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lyrics.lrc; sourceTree = "<group>"; };
-		0D3122E11E504649002EF28E /* LyricsPlayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsPlayTests.m; sourceTree = "<group>"; };
+		0D3122E11E504649002EF28E /* LyricsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsViewControllerTests.m; sourceTree = "<group>"; };
 		0D3122E31E504D1A002EF28E /* MKMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKMainViewController.xib; sourceTree = "<group>"; };
 		0D6504A21E5352AB008E1254 /* lyricsForUnitTest.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lyricsForUnitTest.lrc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				0D3122BF1E504346002EF28E /* LyricsParserTests.m */,
-				0D3122E11E504649002EF28E /* LyricsPlayTests.m */,
+				0D3122E11E504649002EF28E /* LyricsViewControllerTests.m */,
 				0D6504A21E5352AB008E1254 /* lyricsForUnitTest.lrc */,
 				0D3122C11E504346002EF28E /* Info.plist */,
 			);
@@ -269,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D3122C01E504346002EF28E /* LyricsParserTests.m in Sources */,
-				0D3122E21E504649002EF28E /* LyricsPlayTests.m in Sources */,
+				0D3122E21E504649002EF28E /* LyricsViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
