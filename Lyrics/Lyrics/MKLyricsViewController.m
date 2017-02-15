@@ -61,7 +61,7 @@ static const NSTimeInterval kCountdownInterval = 3.0;
     for (int i = 0; i < parsedLyricsData.count; i++) {
         if ([parsedLyricsData[i][@"sec_st"] boolValue]) {
             CATextLayer *countdownTextLayer = self.mkLyricsScrollView.countdownTextLayers[i];
-			double startTime = [parsedLyricsData[i][@"lineStart"] doubleValue];
+			double startTime = [parsedLyricsData[i][@"start"] doubleValue];
 			
             if ([self _isTime:currentPlayTime inIntervalFrom:startTime - kCountdownInterval To:startTime]) {
                 countdownTextLayer.string = [NSString stringWithFormat:@"%d", (int)(startTime - currentPlayTime) + 1];
@@ -76,8 +76,8 @@ static const NSTimeInterval kCountdownInterval = 3.0;
 - (void)_markPlayingLyrics:(NSTimeInterval)currentPlayTime
 {
     for (int i = 0; i < parsedLyricsData.count; i++) {
-		double startTime = [parsedLyricsData[i][@"lineStart"] doubleValue];
-		double endTime = [parsedLyricsData[i][@"lineEnd"] doubleValue];
+		double startTime = [parsedLyricsData[i][@"start"] doubleValue];
+		double endTime = [parsedLyricsData[i][@"end"] doubleValue];
 		
         if ([self _isTime:currentPlayTime inIntervalFrom:startTime To:endTime]) {
             parsedLyricsData[i][@"playing"] = [NSNumber numberWithBool:YES];

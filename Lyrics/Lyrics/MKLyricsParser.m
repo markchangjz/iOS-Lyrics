@@ -15,22 +15,22 @@
         
         if ([lrcFormatTest evaluateWithObject:line]) {
             
-            NSMutableDictionary *lineMetaData = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary *metaData = [[NSMutableDictionary alloc] init];
             NSArray *lyricsTimeMatches = [lyricsTimeRegularExpression matchesInString:line options:0 range:NSMakeRange(0, [line length])];
             
-            lineMetaData[@"lineStart"]  = [self _convertTimeStringToSecond:[line substringWithRange:[[lyricsTimeMatches objectAtIndex:0] rangeAtIndex:0]]];
-            lineMetaData[@"lineEnd"]    = [self _convertTimeStringToSecond:[line substringWithRange:[[lyricsTimeMatches objectAtIndex:1] rangeAtIndex:0]]];
-            lineMetaData[@"type"]       = [NSNumber numberWithInt:[[line substringWithRange:NSMakeRange(25, 1)] intValue]];
-            lineMetaData[@"playing"]    = [NSNumber numberWithBool:NO];
-            lineMetaData[@"sec_st"]     = [NSNumber numberWithBool:NO];
-            lineMetaData[@"lineLyrics"] = [line substringFromIndex:27];
+            metaData[@"start"] = [self _convertTimeStringToSecond:[line substringWithRange:[[lyricsTimeMatches objectAtIndex:0] rangeAtIndex:0]]];
+            metaData[@"end"] = [self _convertTimeStringToSecond:[line substringWithRange:[[lyricsTimeMatches objectAtIndex:1] rangeAtIndex:0]]];
+            metaData[@"type"] = [NSNumber numberWithInt:[[line substringWithRange:NSMakeRange(25, 1)] intValue]];
+            metaData[@"playing"] = [NSNumber numberWithBool:NO];
+            metaData[@"sec_st"] = [NSNumber numberWithBool:NO];
+            metaData[@"lyrics"] = [line substringFromIndex:27];
             
             if ([line rangeOfString:@"<sec_st>"].location != NSNotFound) {
-                lineMetaData[@"sec_st"]     = [NSNumber numberWithBool:YES];
-                lineMetaData[@"lineLyrics"] = [line substringFromIndex:35];
+                metaData[@"sec_st"] = [NSNumber numberWithBool:YES];
+                metaData[@"lyrics"] = [line substringFromIndex:35];
             }
 
-            [parsedLyricsData addObject:lineMetaData];
+            [parsedLyricsData addObject:metaData];
         }
     }
     
