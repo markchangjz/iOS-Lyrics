@@ -87,6 +87,7 @@ static const NSTimeInterval kRefreshInterval = 0.25;
 												repeats:YES];
 	
 	[[NSRunLoop mainRunLoop] addTimer:lyricsRefreshTimer forMode:NSRunLoopCommonModes];
+	// 避免 Scroll View 捲動時，切到 UITrackingRunLoopMode 而讓 timer 暫停
 }
 
 - (void)_refreshLyricsViewController:(NSTimer *)timer
